@@ -1,8 +1,22 @@
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar"
+
+import Home from "./pages/Home";
+import Institucion from "./pages/Institucion";
+import Servicios from "./pages/Servicios";
+import Contacto from "./pages/Contacto";
+
 function App() {
   return (
-    <div className="bg-blue-500 text-white text-5xl p-10">
-      Initial configuration
-    </div>
+  <>
+    <Navbar />
+    <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/institucion" element={<Institucion />} />
+        <Route path="/servicios" element={<Servicios />} />
+        <Route path="/contacto" element={<Contacto />} />
+    </Routes>
+  </>
   )
 }
 export default App
