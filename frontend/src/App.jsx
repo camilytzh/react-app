@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Institucion from "./pages/Institucion";
 import Servicios from "./pages/Servicios";
 import Contacto from "./pages/Contacto";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/contacto" element={<Contacto />} />
     </Routes>
+    <Footer />
   </>
   )
 }
