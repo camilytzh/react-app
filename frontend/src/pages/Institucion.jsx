@@ -8,7 +8,7 @@ const Institucion = () => {
       <div className="relative w-full h-64 lg:h-90">
         <img src="/src/assets/about-us-img.png" alt="About Us" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/10"></div>
-        <div className="absolute top-4 right-4 lg:right-8 w-11/12 lg:w-2/5 bg-white/90 backdrop-blur-sm p-4 lg:p-8 border-l-8 border-b-8 border-blue-950">
+        <div className="absolute top-4 right-4 lg:right-8 w-11/12 lg:w-2/5 bg-white/90 backdrop-blur-sm p-4 lg:p-8 border-l-6 border-b-6 border-blue-950 rounded-lg">
           <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-3">¿Quiénes somos?</h1>
           <p className={aboutUsText}>
             La Empresa Pública Municipal de Tránsito y Movilidad de Guayaquil, EP (ATM) es la autoridad del cantón Guayaquil encargada de planificar, regular, controlar y gestionar el tránsito, el transporte terrestre y la movilidad.
