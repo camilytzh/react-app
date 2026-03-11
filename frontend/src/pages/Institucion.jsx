@@ -1,3 +1,5 @@
+import Gallery from "../components/Gallery";
+
 const Institucion = () => {
   const aboutUsText = "text-gray-700 text-xs lg:text-sm leading-relaxed mb-2 flex text-justify"; 
   const valueSubtitle = "text-lg font-bold text-gray-800 mb-2";
@@ -43,6 +45,7 @@ const Institucion = () => {
           </div>
         </div>
       </div>
+      <Gallery images={["/src/assets/atm-gallery-1.png", "/src/assets/atm-gallery-2.png", "/src/assets/atm-gallery-3.png", "/src/assets/atm-gallery-4.png", "/src/assets/atm-gallery-5.png", "/src/assets/atm-gallery-6.png"]} />
     </div>  
   );
 }
