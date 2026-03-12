@@ -14,9 +14,9 @@ const Gallery = ({ images }) => {
         window.addEventListener('resize', updateVisible);
         return () => window.removeEventListener('resize', updateVisible);
     }, []);
-    
+
     useEffect(() => {
-      setIndex(0); // resetea al cambiar tamaño
+      setIndex(0);
     }, [visibleCount]);
 
     useEffect(() => {
