@@ -21,9 +21,13 @@ const Navbar = () => {
                 <button className='md:hidden' onClick={() => setMenuOpen(true)}>
                     <img src={menu} alt="Menu" className='h-8 w-8'/>    
                 </button>
-                
+
             </div>
         </nav>
+        
+        {menuOpen && (
+            <div className="fixed inset-0 bg-black/50 z-40" onClick={() => setMenuOpen(false)}/>
+        )}
     </>
     );
 };
