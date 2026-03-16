@@ -1,5 +1,6 @@
 import logo from '../assets/logo-atm.png';
 import menu from '../assets/icons/menu-icon.svg';
+import login from '../assets/icons/login-icon.svg';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 
@@ -11,7 +12,7 @@ const Navbar = () => {
     return (
         <>
             <nav className="sticky top-0 bg-blue-950 text-white px-4 py-2.5 z-50 shadow-md shadow-gray-900">
-                <div className="max-w-7xl mx-auto flex items-center">
+                <div className="max-w-7xl mx-auto flex items-center justify-between gap-25">
                     <div className='flex items-center gap-2'>
                         <button className='md:hidden' onClick={() => setMenuOpen(true)}>
                             <img src={menu} alt="Menu" className='h-8 w-8 hover:scale-110 transition-transform cursor-pointer'/>    
@@ -28,6 +29,10 @@ const Navbar = () => {
                         <li><Link to="/servicios" className={navLinks}>SERVICIOS</Link></li>
                         <li><Link to="/contacto" className={navLinks}>CONTACTO</Link></li>
                     </ul>
+
+                    <Link to="/">
+                        <img src={login} alt="Login" className="h-6 w-auto"/>
+                    </Link>
                 </div>
             </nav>
 
