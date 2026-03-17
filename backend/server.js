@@ -1,17 +1,20 @@
 const express = require('express');
 const cors = require('cors');
+require ('dotenv').config();
+const db = require('./db');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send({ message: 'Hello, API is running!'});
-});
+// Routes
 
-const port = 3000;
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+db.getConnection()
+    .then(() => {
+        console.log('MySQL connected');
+        app.listen(process.env.PORT, () => {
+            console.log(`Server at http://localhost:${process.env.PORT}`);
+        });
+    })
+    .catch(err => console.error('Connection error:', err));
