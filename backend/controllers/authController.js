@@ -36,11 +36,26 @@ const login = async (req, res) => {
             [email]
         );
         if(users.length === 0) {
-            return res.status(400).json({ message: 'Credenciales inválidas' });
+            return res.status(401).json({ message: 'Credenciales inválidas' });
         }
 
         const userFound = users[0];
+
+        const match = await bcrypt.compare(password, userFound.password);
+        if(!match) {
+            return res.status(401).json({ message: 'Credenciales inválidas' });
+        }
+
+        const token = jwt.sign(
+            { id: userFound.id, nombre: userFound.nombre }, 
+            process.env.JWT_SECRET, 
+            { expiresIn: '1d' }
+        );
+        res.json({ token, nombre: userFound.nombre, apellido: userFound.apellido });
+
     } catch (err) {
         res.status(500).json({ message: 'Error en el servidor', err });
     }
 }
+
+module.exports = { register, login };
