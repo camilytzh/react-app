@@ -26,3 +26,21 @@ const register = async (req, res) => {
         res.status(500).json({ message: 'Error en el servidor', err });
     }
 };
+
+const login = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const [users] = await db.query(
+            'SELECT * FROM users WHERE email = ?', 
+            [email]
+        );
+        if(users.length === 0) {
+            return res.status(400).json({ message: 'Credenciales inválidas' });
+        }
+
+        const userFound = users[0];
+    } catch (err) {
+        res.status(500).json({ message: 'Error en el servidor', err });
+    }
+}
