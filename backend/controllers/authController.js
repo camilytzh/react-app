@@ -7,7 +7,7 @@ const register = async (req, res) => {
 
     try {
         const [existingUser] = await db.query(
-            'SELECT id FROM users WHERE email = ? OR cedula = ?', 
+            'SELECT id FROM usuarios WHERE email = ? OR cedula = ?', 
             [email, cedula]);
 
         if (existingUser.length > 0) {
@@ -17,7 +17,7 @@ const register = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const [result] = await db.query(
-            'INSERT INTO users (nombre, apellido, email, password, cedula) VALUES (?, ?, ?, ?, ?)',
+            'INSERT INTO usuarios (nombre, apellido, email, password, cedula) VALUES (?, ?, ?, ?, ?)',
             [nombre, apellido, email, hashedPassword, cedula],
         );
         res.status(201).json({ message: 'Usuario registrado exitosamente', id: result.insertId });
@@ -32,7 +32,7 @@ const login = async (req, res) => {
 
     try {
         const [users] = await db.query(
-            'SELECT * FROM users WHERE email = ?', 
+            'SELECT * FROM usuarios WHERE email = ?', 
             [email]
         );
         if(users.length === 0) {

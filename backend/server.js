@@ -9,6 +9,7 @@ app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.json());
 
 // Routes
+app.use('/api/auth', require('./routes/auth'));
 
 db.getConnection()
     .then(() => {
