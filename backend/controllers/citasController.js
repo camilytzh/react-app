@@ -25,3 +25,17 @@ const agendarCita = async (req, res) => {
         res.status(500).json({ message: 'Error en el servidor', err });
     }
 };
+
+const getCitas = async (req, res) => {
+    const usuario_id = req.usuario_id;
+
+    try {
+        const [citas] = await db.query(
+            'SELECT * FROM citas WHERE usuario_id = ? ORDER BY fecha ASC, hora ASC',
+            [usuario_id]
+        );
+        res.json(citas);
+    } catch (err) {
+        res.status(500).json({ message: 'Error en el servidor', err });
+    }
+};
