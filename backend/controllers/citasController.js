@@ -30,6 +30,13 @@ const getCitas = async (req, res) => {
     const usuario_id = req.usuario_id;
 
     try {
+        await db.query(
+            `UPDATE citas SET estado = 'finalizada' 
+             WHERE usuario_id = ? AND estado = 'pendiente' 
+             AND CONCAT(fecha, ' ', hora) < NOW()`,
+            [usuario_id]
+        );
+
         const [citas] = await db.query(
             'SELECT * FROM citas WHERE usuario_id = ? ORDER BY fecha ASC, hora ASC',
             [usuario_id]
@@ -52,7 +59,10 @@ const cancelarCita = async (req, res) => {
         if (cita.length === 0) {
             return res.status(404).json({ message: 'Cita no encontrada' });
         }
-        
+        if (rows[0].estado === 'finalizada') {
+            return res.status(400).json({ message: 'No puedes cancelar una cita finalizada' });
+        }
+
         await db.query(
             'UPDATE citas SET estado = "cancelada" WHERE id = ?',
              [id]
