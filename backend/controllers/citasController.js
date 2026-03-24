@@ -39,3 +39,29 @@ const getCitas = async (req, res) => {
         res.status(500).json({ message: 'Error en el servidor', err });
     }
 };
+
+const cancelarCita = async (req, res) => {
+    const { id } = req.params;
+    const usuario_id = req.usuario_id;
+
+    try {
+        const [cita] = await db.query(
+            'SELECT id FROM citas WHERE id = ? AND usuario_id = ?',
+            [id, usuario_id]
+        );
+        if (cita.length === 0) {
+            return res.status(404).json({ message: 'Cita no encontrada' });
+        }
+        
+        await db.query(
+            'UPDATE citas SET estado = "cancelada" WHERE id = ?',
+             [id]
+        );
+
+        res.json({ message: 'Cita cancelada exitosamente' });
+    } catch (err) {
+        res.status(500).json({ message: 'Error en el servidor', err });
+    }
+};
+
+module.exports = { agendarCita, getCitas, cancelarCita };
