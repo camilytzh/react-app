@@ -1,8 +1,8 @@
-const db = rqeuire('../db');
+const db = require('../db');
 
 const agendarCita = async (req, res) => {
     const { fecha,  hora, motivo} = req.body;
-    const usuario_id = req.usuario_id;
+    const usuario_id = req.usuario.id;
 
     try {
         if (!fecha || !hora || !motivo) {
