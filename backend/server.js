@@ -11,6 +11,7 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/contacto', require('./routes/contacto'));
 app.use('/api/citas', require('./routes/citas'));
+app.use('/api/pagos', require('./routes/pagos'));
 
 db.getConnection()
     .then(() => {
