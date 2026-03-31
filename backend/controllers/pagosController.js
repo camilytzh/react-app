@@ -12,7 +12,7 @@ const realizarPago = async (req, res) => {
             return res.status(400).json({ message: 'El monto debe ser mayor a cero' });
         }
         const [result] = await db.query(
-            'INSERT INTO pagos (usuario_id, concepto, monto, estado, fecha) VALUES (?, ?, ?, "pagado", NOW())',
+            'INSERT INTO pagos (usuario_id, concepto, monto, estado, fecha_pago) VALUES (?, ?, ?, "pagado", NOW())',
             [usuario_id, concepto, monto]
         );
         res.status(201).json({ message: 'Pago realizado exitosamente', id: result.insertId });
@@ -21,3 +21,20 @@ const realizarPago = async (req, res) => {
         res.status(500).json({ message: 'Error en el servidor', err });
     }
 };
+
+const getPagos = async (req, res) => {
+    const usuario_id = req.usuario.id;
+
+    try {
+        const [pagos] = await db.query(
+            'SELECT * FROM pagos WHERE usuario_id = ? ORDER BY fecha_pago DESC',
+            [usuario_id]
+        );
+        res.json(pagos);
+
+    } catch (err) {
+        res.status(500).json({ message: 'Error en el servidor', err });
+    }
+};
+
+module.exports = { realizarPago, getPagos };
