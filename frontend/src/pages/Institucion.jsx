@@ -1,10 +1,17 @@
 import Gallery from "../components/Gallery";
+import transparencyIcon from "../assets/icons/zoom-svgrepo-com.svg";
+import responsibilityIcon from "../assets/icons/hand-stars-svgrepo-com.svg";
+import honestyIcon from "../assets/icons/balance-1-svgrepo-com.svg";
+import serviceIcon from "../assets/icons/message-circle-check-svgrepo-com.svg";
+import securityIcon from "../assets/icons/security-verified-solid-svgrepo-com.svg";
 
 const Institucion = () => {
   const aboutUsText = "text-gray-700 text-xs lg:text-sm leading-relaxed mb-2 flex text-justify"; 
   const valueSubtitle = "text-lg font-bold text-gray-800 mb-2";
   const valueDescription = "text-gray-600 text-xs lg:text-sm leading-relaxed";
   const cardStyle = "bg-white p-6 rounded-xl shadow-md text-center border-l-4 border-b-4 border-white hover:border-blue-950 transition-colors duration-300";
+  const valueIconStyle = "h-20 w-auto mb-3 mx-auto";
+  
   return (
     <div className="bg-gray-100">
       <div className="relative w-full h-64 lg:h-90">
@@ -24,22 +31,27 @@ const Institucion = () => {
         <h2 className="text-center text-blue-950 font-bold text-2xl mb-4">Nuestros Valores</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 ">
           <div className={cardStyle}>
+            <img src={transparencyIcon} alt="Transparencia" className={valueIconStyle} />
             <h3 className={valueSubtitle}>Transparencia</h3>
             <p className={valueDescription}>Gestión clara, ética y abierta a la ciudadanía.</p>
           </div>
           <div className={cardStyle}>
+            <img src={responsibilityIcon} alt="Responsabilidad" className={valueIconStyle} />
             <h3 className={valueSubtitle}>Responsabilidad</h3>
             <p className={valueDescription}>Compromiso con los objetivos institucionales y el servicio público.</p>
           </div>
           <div className={cardStyle}>
+            <img src={honestyIcon} alt="Honestidad" className={valueIconStyle} />
             <h3 className={valueSubtitle}>Honestidad</h3>
             <p className={valueDescription}>Actuación basada en la verdad y la justicia.</p>
           </div>
           <div className={cardStyle}>
+            <img src={serviceIcon} alt="Servicio" className={valueIconStyle} />
             <h3 className={valueSubtitle}>Servicio a la Ciudadanía</h3>
             <p className={valueDescription}>Soluciones ágiles y accesibles para mejorar la movilidad.</p>
           </div>
           <div className={cardStyle}>
+            <img src={securityIcon} alt="Seguridad" className={valueIconStyle} />
             <h3 className={valueSubtitle}>Seguridad Vial</h3>
             <p className={valueDescription}>La vida como prioridad en cada decisión.</p>
           </div>
