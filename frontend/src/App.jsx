@@ -6,6 +6,7 @@ import Institucion from "./pages/Institucion";
 import Servicios from "./pages/Servicios";
 import Contacto from "./pages/Contacto";
 import Footer from "./components/Footer";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/institucion" element={<Institucion />} />
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/login" element={<Login />} />
     </Routes>
     <Footer />
   </>

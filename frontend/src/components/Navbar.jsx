@@ -30,7 +30,7 @@ const Navbar = () => {
                         <li><Link to="/contacto" className={navLinks}>CONTACTO</Link></li>
                     </ul>
 
-                    <Link to="/">
+                    <Link to="/login">
                         <img src={login} alt="Login" className="h-6 w-auto"/>
                     </Link>
                 </div>
