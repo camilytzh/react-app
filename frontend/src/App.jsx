@@ -8,10 +8,11 @@ import Servicios from "./pages/Servicios";
 import Contacto from "./pages/Contacto";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const App = () => {
   const location = useLocation();
-  const isAuthPage = ['/login'].includes(location.pathname);
+  const isAuthPage = ['/login', '/register'].includes(location.pathname);
 
   return (
   <>
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
     </Routes>
     {!isAuthPage && <Footer />}
   </>
