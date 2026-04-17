@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
     const inputClasses = "w-full px-4 py-2 rounded-md bg-gray-200 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400";
+    const labelClasses = "text-sm font-medium text-gray-300";
 
     const [form, setForm] = useState({
         email: '',
@@ -42,12 +43,12 @@ const Login = () => {
                     </div>
                 )}
                     <div className="flex flex-col gap-1">
-                        <label className="text-sm font-medium text-gray-300">Correo electrónico</label>
+                        <label className={labelClasses}>Correo electrónico</label>
                         <input type="email" name="email" placeholder="usuario@correo.com" required onChange={handleChange} className={inputClasses} />
                     </div>
 
                     <div className="flex flex-col gap-1">
-                        <label className="text-sm font-medium text-gray-300">Contraseña</label>
+                        <label className={labelClasses}>Contraseña</label>
                         <input type="password" name="password" placeholder="••••••••••" required onChange={handleChange} className={inputClasses} />
                     </div>
                     <button type="submit" disabled ={loading} className="w-full bg-blue-400 text-white py-2 mt-4 rounded-md hover:bg-blue-500 transition-colors duration-200 disabled:opacity-60">{loading ? 'Iniciando sesión...' : 'Iniciar sesión'}</button>
